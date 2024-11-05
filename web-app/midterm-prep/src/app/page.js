@@ -13,6 +13,7 @@ import { useState } from "react";
 //component for data state - check
 // error handling - bonus 
 
+// part 1 of page.js
 export default function Home() {
     //if useState isnt null, probably fetching or loading data or have data
     //if useState  === data, we can display our data
@@ -30,6 +31,7 @@ export default function Home() {
       setLoading(false);
     }
 
+    //DisplayAstronomyData.js organism
     const DisplayAstronomyData = () => {
       //display if we have data
       //loading state
@@ -38,10 +40,12 @@ export default function Home() {
       if (loading) return <div>Loading!</div>;
 
       if (astronomyData) {
+        //const dataThatIsFormattedForDisplay = astronomyData.map((entry, i) => (
         const formattedData = JSON.stringify(astronomyData);
         const dataThatIsFormattedForDisplay = [];
         astronomyData.forEach((entry, i) => {
           dataThatIsFormattedForDisplay.push(
+          //important stuff
           <article key={i}>
             <img src={entry.url} />
             <h3>{entry.title}</h3>
@@ -55,9 +59,12 @@ export default function Home() {
 
       return(<div>Empty, no data fetched</div>)
     };
+    //end of DisplayAstronomyData.js
 
     const Header = () => {
       //build the UI
+      //Button page
+      //<button onClick={onClick}>{text}</button>
       return (
       <header>
         Welcome to my midterm prep
@@ -68,6 +75,10 @@ export default function Home() {
       </header>
       );
     }
+
+    //part 2 of page.js
+    //<Header fetchAstronomyData={fetchAstronomyData} />
+    //DisplayAstronomyData astronomyData={astronomyData} loading={loading}
     return (
     <div className="m-8">
       <Header />
